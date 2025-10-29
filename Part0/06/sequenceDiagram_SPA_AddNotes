@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    Note over browser: User put int new note and click “Save”
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa<br>
+    activate server
+    server-->>browser: JSON responding
+    deactivate server
+
+    Note right of browser: The browser rendering the spa to the browser

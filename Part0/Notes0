@@ -1,0 +1,11 @@
+----> Developer Console
+ctrl + shift + i
+network on and disable cache on
+
+----> http get
+The server and the web browser communicate with each other using the HTTP protocol.
+header -> general -> requsted address and status code 200
+
+----> DOM: Document Object Model
+----> API: Application Prgramming Interface
+----> CSS: cascading style sheets
