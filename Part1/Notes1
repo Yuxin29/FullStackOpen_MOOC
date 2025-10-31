@@ -2,3 +2,35 @@
       a frontend lib for javasript, to build the UI with ready components
 
 ----> npm: node package manager
+
+----> jsx: jsx is a syntax extention for JavaScript that let people write html-like markup inside a javascript file
+- JSX returned by React components is compiled into Javascript/
+- the compilation is handled by Babel
+
+----> props: it is a bit like attribute. passing data between components.
+React components use props to comminicate with each other
+
+----> component name in React: first letter should be capitalized
+
+
+----> components in html
+--layout and container element 
+      - <section> </section>
+      - <article>
+      - <header>
+      - <footer>
+      - <main>
+--text element 
+      - <h1>, ... <h6> header, getting smaller
+      - <p>, paragrapgh
+      - <span>
+-- chart element
+      - <form>
+      - <input>
+      - <button>
+      - <img>
+      - <video>
+-- link and navigation element
+      - <a>  altra link. for example <a href="http://www.google.com">Go to goodle</a>
+      - <nav> degine a collection of linked that the user can browse
+
