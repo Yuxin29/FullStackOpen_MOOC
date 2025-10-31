@@ -5,22 +5,12 @@ const part2 = 'Using props to pass data'
 const exercises2 = 7
 const part3 = 'State of a component'
 const exercises3 = 14
-  
+
 const Header = ({course}) => {
   return <h1>{course}</h1>
 }
 
-const Content = ({part1, exercises1, part2, exercises2, part3, exercises3}) => {
-  return(
-    <div>
-       <p>{part1} {exercises1}</p>
-       <p>{part2} {exercises2}</p>
-       <p>{part3} {exercises3}</p>
-    </div>
-  )
-}
-
-// const Total = ({part1, exercises1, part2, exercises2, part3, exercises3}) => {
+// const Content = ({part1, exercises1, part2, exercises2, part3, exercises3}) => {
 //   return(
 //     <div>
 //        <p>{part1} {exercises1}</p>
@@ -30,12 +20,47 @@ const Content = ({part1, exercises1, part2, exercises2, part3, exercises3}) => {
 //   )
 // }
 
+const Total = ({exercises1, exercises2, exercises3}) => {
+  const total = exercises1 + exercises2 + exercises3
+  return(
+       <p>Total number of exercises: {total}</p>
+  )
+}
+
+// const App = () => {
+//   return (
+//     <div>
+//       <Header course={course}/>
+//       <Content part1={part1} exercises1={exercises1} part2={part2} exercises2={exercises2} part3={part3} exercises3={exercises3}/>
+//       <Total exercises1={exercises1} exercises2={exercises2} exercises3={exercises3}/>
+//     </div>
+//   )
+// }
+
+const Part = ({partName, exerciseNumber}) => {
+  return (
+    <p>{partName}, {exerciseNumber}</p>
+  )
+}
+
+// const Content = ... {
+//   return (
+//     <div>
+//       <Part .../>
+//       <Part .../>
+//       <Part .../>
+//     </div>
+//   )
+// }
+
 const App = () => {
   return (
     <div>
       <Header course={course}/>
-      <Content part1={part1} exercises1={exercises1} part2={part2} exercises2={exercises2} part3={part3} exercises3={exercises3}/>
-      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+      <Part partName={part1} exerciseNumber={exercises1}/>
+      <Part partName={part2} exerciseNumber={exercises2}/>
+      <Part partName={part3} exerciseNumber={exercises3}/>
+      <Total exercises1={exercises1} exercises2={exercises2} exercises3={exercises3}/>
     </div>
   )
 }
