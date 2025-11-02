@@ -1,3 +1,5 @@
+======================= Introduction to React =======================
+
 ----> React:
       a frontend lib for javasript, to build the UI with ready components
 
@@ -34,3 +36,55 @@ React components use props to comminicate with each other
       - <a>  altra link. for example <a href="http://www.google.com">Go to goodle</a>
       - <nav> degine a collection of linked that the user can browse
 
+======================= Javascript =======================
+----> JavaScript:  ECMAScript
+      - newest version ECMAScript 2024
+      - transpilinh by Babel
+      - node name_of_file.js    : write the code into .js
+      - node node.js
+
+----> Variables:
+      - var: until 2015
+      - const
+      - let: normal changeble variable
+
+----> Printf
+      console.log(x) 
+
+----> Arrays
+const arr = [1, 2, 3, 4]
+arr.push(5)    //append, and const means the references is immutable, but the data it points to can
+const arr_2 = arr.concat(5)
+const arr_3 = arr.map(value => value * 2)
+console.log(t.length)
+console.log(t[1])
+t.forEach( value =>
+{
+      console.log(value)
+}
+)
+
+----> Objects
+      - the value of a property can be anytinhg: str, arr, int, objects
+const object1 = {
+      name: 'Yuxin',
+      age: 29,
+      education: 'master'
+}
+const object2 = {
+      name: 'Mikko',
+      age: 31,
+      education: 'master'
+}
+const object3 = {
+      name: {
+            first: 'Harri',
+            last: 'Hemilae'
+      },
+      age: 67,
+      education: 'Phd'
+}
+console.log(object3.name)  // Harri Hemilae will be printed
+-- add propertys
+object1.address = 'Helsinki'
+object1['door number'] = 5254
