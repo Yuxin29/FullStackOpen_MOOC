@@ -88,3 +88,6 @@ console.log(object3.name)  // Harri Hemilae will be printed
 -- add propertys
 object1.address = 'Helsinki'
 object1['door number'] = 5254
+
+----> Functions
+-- =>
