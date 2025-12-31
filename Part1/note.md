@@ -1,21 +1,24 @@
 ======================= Introduction to React =======================
+# Introduction to React
 
-----> React:
-      a frontend lib for javasript, to build the UI with ready components
+## React
+a frontend lib for javasript, to build the UI with ready components
 
-----> npm: node package manager
+### npm
+node package manager
 
-----> jsx: jsx is a syntax extention for JavaScript that let people write html-like markup inside a javascript file
+## JSX
+jsx is a syntax extention for JavaScript that let people write html-like markup inside a javascript file
 - JSX returned by React components is compiled into Javascript/
 - the compilation is handled by Babel
 
-----> props: it is a bit like attribute. passing data between components.
-React components use props to comminicate with each other
+## Props
+      it is a bit like attribute. passing data between components.
 
-----> component name in React: first letter should be capitalized
+- React components use props to comminicate with each other
+- component name in React: first letter should be capitalized
 
-
-----> components in html
+## components in html
 --layout and container element 
       - <section> </section>
       - <article>
@@ -36,22 +39,25 @@ React components use props to comminicate with each other
       - <a>  altra link. for example <a href="http://www.google.com">Go to goodle</a>
       - <nav> degine a collection of linked that the user can browse
 
-======================= Javascript =======================
-----> JavaScript:  ECMAScript
-      - newest version ECMAScript 2024
-      - transpilinh by Babel
-      - node name_of_file.js    : write the code into .js
-      - node node.js
+# JavaScript Basics
 
-----> Variables:
-      - var: until 2015
-      - const
-      - let: normal changeble variable
+## JavaScript:  
+ECMAScript
+- newest version ECMAScript 2024
+- transpilinh by Babel
+- node name_of_file.js    : write the code into .js
+- node node.js
 
-----> Printf
-      console.log(x) 
+## Variables:
+- var: until 2015
+- const
+- let: normal changeble variable
 
-----> Arrays
+## Printf
+console.log(x) 
+
+## Arrays
+```js
 const arr = [1, 2, 3, 4]
 arr.push(5)    //append, and const means the references is immutable, but the data it points to can
 const arr_2 = arr.concat(5)
@@ -63,9 +69,11 @@ t.forEach( value =>
       console.log(value)
 }
 )
+```
+## Objects
+      the value of a property can be anytinhg: str, arr, int, objects
 
-----> Objects
-      - the value of a property can be anytinhg: str, arr, int, objects
+``` js 
 const object1 = {
       name: 'Yuxin',
       age: 29,
@@ -88,6 +96,7 @@ console.log(object3.name)  // Harri Hemilae will be printed
 -- add propertys
 object1.address = 'Helsinki'
 object1['door number'] = 5254
+```
 
-----> Functions
--- =>
+## Functions
+ =>
