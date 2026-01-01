@@ -20,24 +20,24 @@ jsx is a syntax extention for JavaScript that let people write html-like markup 
 ## HTML Components
 
 - layout and container element 
-      - <section> </section>
-      - <article>
-      - <header>
-      - <footer>
-      - <main>
+      - '<section> </section>'
+      - '<article>'
+      - '<header>'
+      - '<footer>' 
+      - '<main>'
 - text element 
-      - <h1>, ... <h6> header, getting smaller
-      - <p>, paragrapgh
-      - <span>
+      - '<h1>', ... '<h6>'
+      - '<p>'
+      - '<span>'
 - chart element
-      - <form>
-      - <input>
-      - <button>
-      - <img>
-      - <video>
+      - '<form>'
+      - '<input>'
+      - '<button>'
+      - '<img>'
+      - '<video>'
 - link and navigation element
-      - <a>  altra link. for example <a href="http://www.google.com">Go to goodle</a>
-      - <nav> degine a collection of linked that the user can browse
+      - '<a>'  altra link. for example <a href="http://www.google.com">Go to goodle</a>
+      - \<nav>' degine a collection of linked that the user can browse
 
 # JavaScript Basics
 
@@ -97,3 +97,75 @@ object1['door number'] = 5254
 
 ## Functions
  =>
+
+##  Object methods and "this"
+- in js, it is possibile to define a method within an obj, for example
+
+``` js 
+const arto = {
+  name: 'Arto Hellas',
+  greet: function() {
+    console.log('hello, my name is ' + this.name)
+  },
+}
+setTimeout(arto.greet, 1000)
+```
+
+- it is only used in old react, not in the morden react
+- it feels like a bit like class and member functions in c++, but it is differently. to sum up
+      - In js, a method is just a function stored in an object, not a class-bound member function.
+      - The value of this is determined at call time, not where the function is defined.
+      - In C++, member functions are always bound to the object and cannot lose this.
+      - JavaScript objects can add or change methods at runtime; C++ classes cannot.
+      - JavaScript uses prototype-based OOP, while C++ uses class-based OOP.
+      - Modern React avoids this by using function components and hooks instead of class components.
+
+## Classes
+- there is no class mechanism in JavaScript like the ones in object-oriented programming languages. 
+- There are, however, features to make "simulating" object-oriented classes possible.
+``` js 
+class Person {
+  constructor(name, age) {
+    this.name = name
+    this.age = age
+  }
+  greet() {
+    console.log('hello, my name is ' + this.name)
+  }
+}
+
+const adam = new Person('Adam Ondra', 29)
+adam.greet()
+const janja = new Person('Janja Garnbret', 23)
+janja.greet()
+``` 
+
+# Component state, event handlers
+
+## Component helper functions
+in a componeny function, you can encapsule a helper function within it.
+
+## Destructuring
+- in OOP, we encapsulation
+      - internally protected
+- in react, we destructuring
+      - more readable
+      - reduce repeatance
+      - functional style
+
+## Page Re-rendering
+
+## Stateful component
+
+## Event handling
+
+## An event handler is a function
+
+## Passing state - to child components
+
+## Changes in state cause re-rendering
+ Calling a function that changes the state causes the component to re-render.
+
+# A more complex state, debugging React apps
+
+## Complex state
