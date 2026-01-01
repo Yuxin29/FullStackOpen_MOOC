@@ -169,3 +169,7 @@ in a componeny function, you can encapsule a helper function within it.
 # A more complex state, debugging React apps
 
 ## Complex state
+- React state can be simple (single value) or complex (object with multiple properties).
+- Using multiple useState hooks for separate pieces of state is usually simpler and clearer.
+- we can store multiple values in a single state obj, updating it requires creating a new object.
+- Never mutate state directly, because React relies on immutability to detect changes.
