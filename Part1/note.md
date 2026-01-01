@@ -1,4 +1,3 @@
-======================= Introduction to React =======================
 # Introduction to React
 
 ## React
@@ -41,15 +40,13 @@ jsx is a syntax extention for JavaScript that let people write html-like markup 
 
 # JavaScript Basics
 
-## JavaScript:  
-ECMAScript
+## JavaScript:  ECMAScript
 - newest version ECMAScript 2024
 - transpilinh by Babel
 - node name_of_file.js    : write the code into .js
 - node node.js
 
 ## Variables:
-- var: until 2015
 - const
 - let: normal changeble variable
 
@@ -64,14 +61,13 @@ const arr_2 = arr.concat(5)
 const arr_3 = arr.map(value => value * 2)
 console.log(t.length)
 console.log(t[1])
-t.forEach( value =>
-{
+t.forEach (value => {
       console.log(value)
-}
-)
+})
 ```
+
 ## Objects
-      the value of a property can be anytinhg: str, arr, int, objects
+the value of a property can be anytinhg: str, arr, int, objects
 
 ``` js 
 const object1 = {
@@ -93,8 +89,8 @@ const object3 = {
       education: 'Phd'
 }
 console.log(object3.name)  // Harri Hemilae will be printed
--- add propertys
-object1.address = 'Helsinki'
+
+object1.address = 'Helsinki' // add propertys
 object1['door number'] = 5254
 ```
 
