@@ -17,24 +17,25 @@ jsx is a syntax extention for JavaScript that let people write html-like markup 
 - React components use props to comminicate with each other
 - component name in React: first letter should be capitalized
 
-## components in html
---layout and container element 
+## HTML Components
+
+- layout and container element 
       - <section> </section>
       - <article>
       - <header>
       - <footer>
       - <main>
---text element 
+- text element 
       - <h1>, ... <h6> header, getting smaller
       - <p>, paragrapgh
       - <span>
--- chart element
+- chart element
       - <form>
       - <input>
       - <button>
       - <img>
       - <video>
--- link and navigation element
+- link and navigation element
       - <a>  altra link. for example <a href="http://www.google.com">Go to goodle</a>
       - <nav> degine a collection of linked that the user can browse
 
