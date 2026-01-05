@@ -87,3 +87,9 @@ src/
 ├── App.jsx
 └── main.jsx
 
+## Forms
+
+### Saving the notes in the component state
+- event.preventDefault()	浏览器 DOM API: 阻止默认行为（如刷新页面）
+- onChange={(e)=>...}     React 事件: 用户输入时触发，获取 input 内容
+- onSubmit={(e)=>...}     React 事件: + JS	表单提交时触发，执行自定义函数
