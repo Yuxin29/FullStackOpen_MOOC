@@ -93,3 +93,43 @@ src/
 - event.preventDefault()	浏览器 DOM API: 阻止默认行为（如刷新页面）
 - onChange={(e)=>...}     React 事件: 用户输入时触发，获取 input 内容
 - onSubmit={(e)=>...}     React 事件: + JS	表单提交时触发，执行自定义函数
+
+# Getting data from the Server
+json server
+
+## The browser as a runtime environment
+- fetch is a JavaScript function (browser API) to make HTTP requests.
+- With fetch we can make any HTTP method: GET, POST, PUT, DELETE…
+- By default, fetch() uses the GET method if not specified
+
+## npm
+- we are going to use axios instead of fetch to get used to npm package.
+- a clear indicator that a project is using npm is that there is a package.json file.
+- to install it, use this command line in the pro root "node install axios"
+- also install this "npm install json-server --save-dev"
+- also add this in scripts: "server": "json-server -p 3001 db.json"
+- after all above, can "npm run server"
+
+## Axios and promises
+
+### Axios
+sending request
+### Promises
+waiting for the result
+- pending
+- fulfilled
+- rejected
+### a chaine
+``` js 
+axios
+  .get('http://localhost:3001/notes')
+  .then(response => {
+    console.log(response.data)
+  })
+```
+### axios.get
+it should be put into App component and in the useEffect
+
+## Effect-hooks
+
+## The development runtime environment
