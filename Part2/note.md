@@ -105,7 +105,7 @@ json server
 ## npm
 - we are going to use axios instead of fetch to get used to npm package.
 - a clear indicator that a project is using npm is that there is a package.json file.
-- to install it, use this command line in the pro root "node install axios"
+- to install it, use this command line in the pro root "npm install axios"
 - also install this "npm install json-server --save-dev"
 - also add this in scripts: "server": "json-server -p 3001 db.json"
 - after all above, can "npm run server"
