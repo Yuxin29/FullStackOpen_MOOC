@@ -173,6 +173,35 @@ import noteService from './services/notes'
 ```
 
 ## Cleaner Syntax for Defining Object Literals
+- with the following variables
+``` js 
+const name = 'Leevi'
+const age = 0
+```
+- in older version js 
+``` js 
+const person = {
+  name: name,
+  age: age
+}
+```
+- in updated version
+``` js 
+const person = {
+  name,
+  age
+}
+```
+
 ## Promises and Errors
-## Full stack developer's oath
-## Exercises 2.12.-2.15.
+the rejection of a promise can be handleed by a error page, using a "catch"
+``` jsx
+axios
+  .get('http://example.com/probably_will_fail')
+  .then(response => {
+    console.log('success!')
+  })
+  .catch(error => {
+    console.log('fail')
+  })
+```
