@@ -133,3 +133,46 @@ it should be put into App component and in the useEffect
 ## Effect-hooks
 
 ## The development runtime environment
+
+# Testing data in server
+The json-server package is a so-called REST or RESTful API in its documentation
+
+## REST
+- In REST we refer to individual data objects in our application, as resources. 
+- Resources are fetched from the server with HTTP GET request
+- Creating a new resource for storing a note is done by making an HTTP POST request to the notes URL
+
+## Sending Data to the Server
+- by axios.post
+``` js 
+axios
+  .post('http://localhost:3001/notes', noteObject)
+  .then(
+    response => {console.log(response)}
+  )
+```
+- to update it in the frontend, we have to do one more step
+``` js 
+axios
+  .post('http://localhost:3001/notes', noteObject)
+  .then(
+    response => {
+      setNotes(notes.concat(response.data))
+      setNewNote('')
+    }
+  )
+```
+
+## Changing the Importance of Notes
+
+## Extracting Communication with the Backend into a Separate Module
+-  create a src/services directory and add a file there called notes.js:
+- The App component uses import to get access to the module:
+``` js 
+import noteService from './services/notes'
+```
+
+## Cleaner Syntax for Defining Object Literals
+## Promises and Errors
+## Full stack developer's oath
+## Exercises 2.12.-2.15.
