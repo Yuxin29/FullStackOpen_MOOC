@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 import phonebookService from './services/phonebook'
-import axios from 'axios'
-
 
 // ====================================
 // ex 2.6-2.9
@@ -354,7 +352,103 @@ import axios from 'axios'
 // Extract the code that handles the communication with the backend into its own module
 // by following the example shown earlier in this part of the course material.
 // ====================================
+// const Filter = ({filter, setFilter}) => {
+//   return (
+//     <div> 
+//     filter shown with {' '} 
+//     <input value={filter} onChange={(e) => setFilter(e.target.value)}/>
+//     </div>
+//   )
+// }
 
+// const PersonForm = ({newName, setNewName, newNumber, setNewNumber, addPerson}) => {
+//   return (
+//     <form onSubmit={addPerson}>
+//       <div>
+//         name: <input value={newName} onChange={(e) => setNewName(e.target.value)} />
+//       </div>
+//       <div>
+//         number: <input value={newNumber} onChange={(e) => setNewNumber(e.target.value)} />
+//       </div>
+//       <div>
+//         <button type="submit"> add </button>
+//       </div>
+//     </form>
+//   )
+// }
+
+// // show all the data in the infor
+// const Persons = ({persons}) => {
+//   return (
+//     <ul>
+//       {persons.map(person => <li key={person.name}>{person.name} {person.number}</li>)}
+//     </ul>
+//   )
+// }
+
+// const App = () => {
+//   // getting the backend js data
+//   const [persons, setPersons] = useState([])
+//   useEffect(() => {
+//     phonebookService.getAll()
+//     .then(response => {setPersons(response.data)})
+//   }, [])
+
+//   const [newName, setNewName] = useState('')
+//   const [newNumber, setNewNumber] = useState('')
+//   const [filter, setFilter] = useState('')
+
+//   // add new person states
+//   const addPerson = (event) => {
+//     event.preventDefault()
+//     const isThere = persons.some(person => person.name === newName)
+//     if (isThere) {
+//       alert(`${newName} is already added to phonebook`)
+//       return
+//     }
+//     const nameObject = {
+//       name: newName, 
+//       number: newNumber 
+//     }
+//     phonebookService.create(nameObject) 
+//       .then(response => {
+//         setPersons(persons.concat(response.data))
+//         //could concat nameObject as well, but concat response.data is better                                                             
+//         setNewName('')
+//         setNewNumber('')
+//       })
+//   }
+
+//   // filter persons states: only show the name
+//     const filteredPersons = persons.filter(person => person.name.toLowerCase().includes(filter.toLowerCase()))
+  
+//   //return jsx
+//   return (
+//     <div>
+//       <h2>Phonebook</h2>
+//       <Filter filter={filter} setFilter = {setFilter}/>
+
+//       <h3>add a new</h3>
+//       <PersonForm
+//         newName={newName}
+//         setNewName={setNewName}
+//         newNumber={newNumber}
+//         setNewNumber={setNewNumber}
+//         addPerson={addPerson}
+//       />
+
+//       <h3>Numbers</h3>
+//       <Persons persons={filteredPersons}/>
+//     </div>
+//   )
+// }
+
+
+// ====================================
+// ex 2.13
+// Extract the code that handles the communication with the backend into its own module
+// by following the example shown earlier in this part of the course material.
+// ====================================
 const Filter = ({filter, setFilter}) => {
   return (
     <div> 
@@ -381,10 +475,15 @@ const PersonForm = ({newName, setNewName, newNumber, setNewNumber, addPerson}) =
 }
 
 // show all the data in the infor
-const Persons = ({persons}) => {
+const Persons = ({persons, handleDelete}) => {
   return (
     <ul>
-      {persons.map(person => <li key={person.name}>{person.name} {person.number}</li>)}
+      {persons.map(person => 
+        <li key={person.name}>
+          {person.name} {person.number}
+          <button onClick={() => handleDelete(person.id)}> delete </button>
+        </li>
+      )}
     </ul>
   )
 }
@@ -404,11 +503,29 @@ const App = () => {
   // add new person states
   const addPerson = (event) => {
     event.preventDefault()
-    const isThere = persons.some(person => person.name === newName)
-    if (isThere) {
-      alert(`${newName} is already added to phonebook`)
-      return
+
+    const existsPerson = persons.find(person => person.name === newName)
+    if (existsPerson) {
+      const confirmUpdate = window.confirm(
+        `${newName} is already added to phonebook, replace the old number with a new one?`
+      )
+      if (confirmUpdate) {
+        const updatedPerson = { 
+          ...existsPerson, 
+          number: newNumber 
+        }
+        phonebookService.update(updatedPerson)
+          .then(response => {
+            setPersons(persons.map(person => 
+              person.id !== updatedPerson.id ? person : response.data
+            ))
+            setNewName('')
+            setNewNumber('')
+          })
+        }
+        return
     }
+    
     const nameObject = {
       name: newName, 
       number: newNumber 
@@ -420,6 +537,18 @@ const App = () => {
         setNewName('')
         setNewNumber('')
       })
+  }
+
+  //delete a person
+  const handleDelete = (id) => {
+    const person = persons.find(p => p.id === id)
+    const confirmDelete = window.confirm(`Delete ${person.name} ?`)
+    if (confirmDelete) {
+      phonebookService.remove(id)
+      .then(() => {
+        setPersons(persons.filter(p => p.id !== id))
+      })
+    }
   }
 
   // filter persons states: only show the name
@@ -441,7 +570,7 @@ const App = () => {
       />
 
       <h3>Numbers</h3>
-      <Persons persons={filteredPersons}/>
+      <Persons persons={filteredPersons} handleDelete={handleDelete}/>
     </div>
   )
 }
