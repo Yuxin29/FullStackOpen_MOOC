@@ -455,13 +455,12 @@ import phonebookService from './services/phonebook'
 // after a successful operation is executed 
 // (a person is added or a number is changed):
 // ====================================
-
-const Notification = ({ message }) => {
+const Notification = ({ message, type }) => {
   if (message === null) 
     return null 
 
   const style = {
-    color: 'green',   
+    color: type === 'error' ? 'red' : 'green',  
     background: 'lightgrey',
     fontSize: 20,
     border: 'solid 1px',
@@ -528,11 +527,13 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
 
   // add new person states
   const addPerson = (event) => {
     event.preventDefault()
-
+    
+    // update, need a catcg 
     const existsPerson = persons.find(person => person.name === newName)
     if (existsPerson) {
       const confirmUpdate = window.confirm(
@@ -550,11 +551,19 @@ const App = () => {
             ))
             setNewName('')
             setNewNumber('')
+            setSuccessMessage(`updated ${response.data.name}`)
+            setTimeout(() => setSuccessMessage(null), 4000)
+          })
+          .catch (error => {
+            setErrorMessage(`Info of ${updatedPerson.name} has already been removed from the phonebook`)
+            setTimeout(() => setErrorMessage(null), 4000)
+            setPersons(persons.filter(p => p.id !== updatedPerson.id))
           })
         }
         return
     }
     
+    // add
     const nameObject = {
       name: newName, 
       number: newNumber 
@@ -570,7 +579,7 @@ const App = () => {
       })
   }
 
-  //delete a person
+  //delete a person need a catcg 
   const handleDelete = (id) => {
     const person = persons.find(p => p.id === id)
     const confirmDelete = window.confirm(`Delete ${person.name} ?`)
@@ -578,6 +587,11 @@ const App = () => {
       phonebookService.remove(id)
       .then(() => {
         setPersons(persons.filter(p => p.id !== id))
+      })
+      .catch(error => {
+        setErrorMessage(`Info of ${person.name} has already been removed from the phonebook`)
+        setTimeout(() => setErrorMessage(null), 4000)
+        setPersons(persons.filter(p => p.id !== person.id))
       })
     }
   }
@@ -590,7 +604,8 @@ const App = () => {
     <div>
       <h2>Phonebook</h2>
       <Filter filter={filter} setFilter = {setFilter}/>
-      <Notification message={successMessage} />
+      <Notification message={successMessage} type="success" />
+      <Notification message={errorMessage} type="error" />
 
       <h3>add a new</h3>
       <PersonForm
