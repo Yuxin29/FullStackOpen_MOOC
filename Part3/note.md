@@ -55,18 +55,45 @@ console.log(`Server running on port ${PORT}`)
 - update it by "npm update"
 
 ### Web and Express
-
+- for "npm start" / "node index.js", we need to manuallt restart it whenever sth small changed
+- automatic change in next part
 
 ### Automatic Change Tracking
+- how: "node --watch index.js"
+- or: add in scripts: "dev": "node --watch index.js",
+- and then: npm run dev
+
 ### REST
+- REST: Representational State Transfer
+- in REST, every thing is called as "resource", eg notes, every resource has its own uri
+- http methods: get, post, delete, put, patch
+- REST emphasizes on Uniform Interface
+
 ### Fetching a single resource
+
+
 ### Deleting resources
+
+
 ### Postman
+
+
 ### The Visual Studio Code REST client
+
+
 ### The WebStorm HTTP Client
+
+
 ### Receiving data
+
+
 ### About HTTP request types
+
+
 ### Middleware
+
+
+
 
 ## Deploying app to internet
 
