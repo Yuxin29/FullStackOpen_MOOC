@@ -70,13 +70,32 @@ console.log(`Server running on port ${PORT}`)
 - REST emphasizes on Uniform Interface
 
 ### Fetching a single resource
-
+We can define parameters for routes in Express by using the colon syntax: for example
+``` js
+app.get('/api/notes/:id', (request, response) => {
+  const id = request.params.id
+  const note = notes.find(note => note.id === id)
+  if (note) {
+    response.json(note)
+  } else {
+    response.status(404).end()
+  }
+})
+```
 
 ### Deleting resources
+like wise, we can delete a single resource by refering to its id
+```js
+app.delete('/api/notes/:id', (request, response) => {
+  const id = request.params.id
+  notes = notes.filter(note => note.id !== id)
 
+  response.status(204).end()
+})
+```
 
 ### Postman
-
+Postman and curl are used to test http method
 
 ### The Visual Studio Code REST client
 
