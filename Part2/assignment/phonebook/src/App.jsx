@@ -448,7 +448,35 @@ import phonebookService from './services/phonebook'
 // ex 2.13
 // Extract the code that handles the communication with the backend into its own module
 // by following the example shown earlier in this part of the course material.
+// -- ex 2.15
+// ex 2.16: Phonebook step 11
+// Use the improved error message example from part 2 as a guide 
+// to show a notification that lasts for a few seconds 
+// after a successful operation is executed 
+// (a person is added or a number is changed):
 // ====================================
+
+const Notification = ({ message }) => {
+  if (message === null) 
+    return null 
+
+  const style = {
+    color: 'green',   
+    background: 'lightgrey',
+    fontSize: 20,
+    border: 'solid 1px',
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 10,
+  }
+
+  return (
+    <div style={style}>
+      {message}
+    </div>
+  )
+}
+
 const Filter = ({filter, setFilter}) => {
   return (
     <div> 
@@ -499,6 +527,7 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
 
   // add new person states
   const addPerson = (event) => {
@@ -536,6 +565,8 @@ const App = () => {
         //could concat nameObject as well, but concat response.data is better                                                             
         setNewName('')
         setNewNumber('')
+        setSuccessMessage(`Added ${response.data.name}`)
+        setTimeout(() => setSuccessMessage(null), 4000)
       })
   }
 
@@ -559,6 +590,7 @@ const App = () => {
     <div>
       <h2>Phonebook</h2>
       <Filter filter={filter} setFilter = {setFilter}/>
+      <Notification message={successMessage} />
 
       <h3>add a new</h3>
       <PersonForm
