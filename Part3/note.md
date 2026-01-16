@@ -95,19 +95,29 @@ app.delete('/api/notes/:id', (request, response) => {
 ```
 
 ### Postman
-Postman and curl are used to test http method
+- Postman and curl are used to test http method
+- Postman has extension in VS code
 
 ### The Visual Studio Code REST client
-
-
-### The WebStorm HTTP Client
-
+- "REST client", a substute of Postman in VS code
+- make a dir in root called "request"
+- then all the http request will be saved in a .rest file
 
 ### Receiving data
-
+- Post: when we want to add data to the server
+- to enable it: we need Express json-parser and use command "app.use(express.json())"
+``` js
+app.post('/api/notes', (request, response) => {
+  const note = request.body
+  console.log(note)
+  response.json(note)
+})
+```
+- the body could be added in Postman / REST client in VS code
 
 ### About HTTP request types
-
+- GET method should be safe: meaning it should not change the database ->> HEAD
+- if a request does generate side effects, then the result should be the same regardless of how many times the request is sent. like PUT
 
 ### Middleware
 
