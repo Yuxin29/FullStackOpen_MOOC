@@ -1,5 +1,5 @@
 
-import http from 'http';
+//import http from 'http';
 import express from 'express';
 const app = express()
 
@@ -27,23 +27,43 @@ let phonebook = [
 ]
 
 app.get('/', (request, response) => {
-  response.send('<h1>Hello This is my phonebook 3.1!</h1>')
+  response.send('<h1>Hello This is my phonebook 3.1 - 3,3 !</h1>')
 })
 
+// ex 3.1
 app.get('/api/persons', (request, response) => {
   response.json(phonebook)
 })
 
-// app.get('/api/notes/:id', (request, response) => {
-//   const id = request.params.id
-//   const note = notes.find(note => note.id === id)
+// ex 3.2
+app.get('/info', (request, response) => {
+    const count = phonebook.length
+    const time = new Date()
+    response.send(
+        `<p>Phonebook has info for ${count} people</p>
+        <p>${time}</p>`
+    )
+})
+
+// ex 3.3
+app.get('/api/persons/:id', (request, response) => {
+  const id = request.params.id
+  const person = phonebook.find(person => person.id === id)
   
-//   if (note) {
-//     response.json(note)
-//   } else {
-//     response.status(404).end()
-//   }
-// })
+  if (person) {
+    response.json(person)
+  } else {
+    response.status(404).end()
+  }
+})
+
+// ex 3.4
+app.delete('/api/persons/:id', (request, response) => {
+  const id = request.params.id
+  phonebook = phonebook.filter(person => person.id !== id)
+
+  response.status(204).end()
+})
 
 const PORT = 3001
 app.listen(PORT)
