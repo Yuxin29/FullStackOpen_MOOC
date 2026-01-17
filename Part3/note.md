@@ -122,6 +122,29 @@ app.post('/api/notes', (request, response) => {
 
 ## Deploying app to internet
 
+### Same origin policy and CORS
+- a url's origin: protocal(like http) + hostname + port
+- Access-Control-Allow-Origin
+- Same original policy is for security: forbidden session hijacking
+- to legitimate some cross-original request; we have CORS
+- CORS: Cross Origin Resource Sharing
+
+### Application to the Internet
+- Paas: Platform as a Service
+- Heroku: not free anymore
+- Fly.io: paid
+- Render: free
+
+
+### Frontend production build
+
+### Serving static files from the backend
+
+### The whole app to the internet
+
+### Streamlining deploying of the frontend
+
+### Proxy
 
 
 ## Saving data to MongoDB
