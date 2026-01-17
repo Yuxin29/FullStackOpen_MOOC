@@ -119,13 +119,14 @@ app.post('/api/notes', (request, response) => {
 - GET method should be safe: meaning it should not change the database ->> HEAD
 - if a request does generate side effects, then the result should be the same regardless of how many times the request is sent. like PUT
 
-### Middleware
-
-
-
 
 ## Deploying app to internet
 
+
+
 ## Saving data to MongoDB
+
+
+
 
 ## Validation and ESLint
