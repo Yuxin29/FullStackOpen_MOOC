@@ -135,14 +135,27 @@ app.post('/api/notes', (request, response) => {
 - Fly.io: paid
 - Render: free
 
-
 ### Frontend production build
+- for a viite project: "npm run build": -> production build for applications
+- it will create a dir called dist which contains all html files (index.html)
 
 ### Serving static files from the backend
+- "cp -r dist ../backend" -> copy the production build to the root of the backend dir
 
 ### The whole app to the internet
+- this process is called deployment
 
 ### Streamlining deploying of the frontend
+- to add in package.json  
+``` json
+{
+  "scripts": {
+    //...
+    "build:ui": "rm -rf dist && cd ../frontend && npm run build && cp -r dist ../backend",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push"
+  }
+}
+```
 
 ### Proxy
 

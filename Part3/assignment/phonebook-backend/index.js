@@ -2,11 +2,12 @@
 //import http from 'http';
 import express from 'express';
 import morgan from 'morgan';
+import cors from 'cors'
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
-
 app.use(morgan('tiny'))
 
 morgan.token('body', (request) => {
@@ -121,7 +122,6 @@ app.post('/api/persons', (request, response) => {
 // One of the possible solutions utilizes these two techniques:
 //     creating new tokens  
 //     JSON.stringify         chose this one
-
 
 const PORT = 3001
 app.listen(PORT)
