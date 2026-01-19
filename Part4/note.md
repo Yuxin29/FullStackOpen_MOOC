@@ -29,7 +29,9 @@ I cloned this example into Part3 testing
 ### Note on exports
 
 ### Testing Node applications
-
+- unit test
+- integration test
+- Node has its own built-in test lib called node:test
 
 ## Testing the backend
 
