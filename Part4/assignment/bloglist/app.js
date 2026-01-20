@@ -5,7 +5,7 @@ const blogsRouter = require('./controllers/blogs')
 
 const app = express()
 
-// 连接数据库
+// connecting to database
 const mongoUrl = 'mongodb://localhost/bloglist'
 mongoose.connect(mongoUrl, { family: 4 })
   .then(() => console.log('connected to MongoDB'))
@@ -13,10 +13,10 @@ mongoose.connect(mongoUrl, { family: 4 })
 
 app.use(express.json())
 
-// 路由
+// route for blogs
 app.use('/api/blogs', blogsRouter)
 
-// 根路由测试
+// root route test
 app.get('/', (req, res) => {
   res.send('Bloglist API is running!')
 })
